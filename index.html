@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A. Waller &amp; Son — Master Butchers · Victoria Avenue, Cambridge</title>
+<meta name="description" content="A. Waller & Son. Family butchers on Victoria Avenue, Cambridge. East Anglian beef, award-winning sausages, home-cooked pies, lamb and pork. Open Mon–Sat.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1E7D3;
+    --paper-warm:#E8DBC0;
+    --ink:#1A1410;
+    --ink-soft:#3A2E26;
+    --oxblood:#6E1D1F;
+    --oxblood-deep:#3E1112;
+    --brass:#B89968;
+    --rule:#1A1410;
+    --display:"Libre Baskerville", "Times New Roman", Georgia, serif;
+    --body:"Work Sans", system-ui, sans-serif;
+    --rhythm:clamp(.95rem, .55rem + .9vw, 1.05rem);
+  }
+
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:var(--rhythm);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(rgba(26,20,16,.05) 1px, transparent 1px),
+      radial-gradient(rgba(26,20,16,.04) 1px, transparent 1px);
+    background-size:3px 3px, 7px 7px;
+    background-position:0 0, 1px 1px;
+    mix-blend-mode:multiply;
+    opacity:.55;
+    z-index:1;
+  }
+
+  h1,h2,h3,h4{font-family:var(--display); font-weight:700; text-wrap:balance; margin:0; letter-spacing:-.005em}
+  p{text-wrap:pretty; hyphens:auto; margin:0 0 1em}
+  a{color:inherit}
+
+  .wrap{max-width:1280px; margin:0 auto; padding:0 clamp(1.25rem, 4vw, 3rem); position:relative; z-index:2}
+
+  /* ─── top bar ─────────────────────────────────────────── */
+  .topbar{
+    border-bottom:1px solid var(--rule);
+    font-family:var(--display);
+    font-size:.78rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+  }
+  .topbar__row{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.85rem 0;
+    gap:1.5rem;
+    flex-wrap:wrap;
+  }
+  .topbar a{text-decoration:none}
+  .topbar a:hover{color:var(--oxblood)}
+  .topbar__nav{display:flex; gap:1.5rem}
+  .topbar__hours{font-style:italic; letter-spacing:.04em; text-transform:none; font-size:.85rem}
+
+  /* ─── masthead ────────────────────────────────────────── */
+  .masthead{
+    padding:clamp(2rem, 6vw, 4.5rem) 0 clamp(1.5rem, 4vw, 3rem);
+    border-bottom:1px solid var(--rule);
+    text-align:center;
+  }
+  .masthead__eyebrow{
+    font-family:var(--display); font-style:italic; font-weight:400;
+    font-size:clamp(.95rem, 1.1vw + .5rem, 1.15rem);
+    color:var(--ink-soft);
+    letter-spacing:.02em;
+    margin-bottom:.6rem;
+  }
+  .masthead__title{
+    font-size:clamp(3.4rem, 13vw, 11.5rem);
+    line-height:.86;
+    letter-spacing:-.035em;
+    margin:.2rem 0 .8rem;
+    color:var(--ink);
+  }
+  .masthead__title em{
+    font-family:var(--display); font-style:italic; font-weight:400;
+    color:var(--oxblood);
+  }
+  .masthead__lede{
+    font-family:var(--display); font-style:italic;
+    font-size:clamp(1rem, 1.4vw + .3rem, 1.45rem);
+    color:var(--ink-soft);
+    max-width:36ch; margin:0 auto;
+  }
+  .masthead__rule{
+    width:5rem; height:1px; background:var(--ink);
+    margin:1.6rem auto 1.6rem;
+    border:0;
+  }
+  .masthead__establ{
+    display:inline-flex; align-items:center; gap:1rem;
+    font-family:var(--display); font-style:italic;
+    font-size:.85rem; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .masthead__establ::before,
+  .masthead__establ::after{
+    content:""; width:2rem; height:1px; background:var(--ink-soft);
+  }
+
+  /* ─── marquee strip ───────────────────────────────────── */
+  .strip{
+    background:var(--oxblood-deep);
+    color:var(--paper);
+    overflow:hidden;
+    border-bottom:1px solid var(--ink);
+  }
+  .strip__track{
+    display:inline-flex; gap:3rem; white-space:nowrap;
+    padding:1.05rem 0;
+    animation:scroll 38s linear infinite;
+    font-family:var(--display);
+    font-size:clamp(1rem, 1.2vw + .4rem, 1.35rem);
+    letter-spacing:.03em;
+  }
+  .strip__track span::after{
+    content:"·"; margin-left:3rem; color:var(--brass);
+  }
+  @keyframes scroll { to { transform:translateX(-50%) } }
+  @media (prefers-reduced-motion:reduce){
+    .strip__track{animation:none; padding-left:1.5rem; flex-wrap:wrap; white-space:normal}
+  }
+
+  /* ─── lede block ──────────────────────────────────────── */
+  .lede{
+    padding:clamp(3rem, 7vw, 5.5rem) 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .lede__grid{
+    display:grid; grid-template-columns:1fr; gap:2.5rem;
+  }
+  @media (min-width:840px){
+    .lede__grid{grid-template-columns:1fr 1.4fr; gap:5rem; align-items:start}
+  }
+  .lede__kicker{
+    font-family:var(--display); font-style:italic;
+    font-size:.85rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--ink-soft);
+    border-top:1px solid var(--ink);
+    padding-top:1rem;
+  }
+  .lede__body p{
+    font-family:var(--display);
+    font-size:clamp(1.15rem, 1.2vw + .55rem, 1.6rem);
+    line-height:1.45;
+    margin-bottom:1.2em;
+    color:var(--ink);
+  }
+  .lede__body p:first-child::first-line{ letter-spacing:.02em }
+  .lede__body p:first-child::first-letter{
+    font-weight:700; font-size:3.6em; line-height:.85;
+    float:left; padding:.05em .12em 0 0;
+    color:var(--oxblood);
+  }
+
+  /* ─── counter / services block ────────────────────────── */
+  .counter{
+    background:var(--paper-warm);
+    padding:clamp(3rem, 7vw, 5.5rem) 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .counter__head{
+    display:grid; grid-template-columns:1fr; gap:1.5rem;
+    align-items:end; margin-bottom:clamp(2rem, 4vw, 3rem);
+  }
+  @media (min-width:760px){
+    .counter__head{grid-template-columns:auto 1fr; gap:3rem}
+  }
+  .counter__title{
+    font-size:clamp(2.4rem, 5vw + .5rem, 4.4rem);
+    line-height:.95; letter-spacing:-.02em;
+  }
+  .counter__title em{font-style:italic; font-weight:400; color:var(--oxblood)}
+  .counter__intro{
+    font-family:var(--display); font-style:italic;
+    font-size:clamp(1rem, .9vw + .6rem, 1.2rem);
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+
+  .ledger{
+    list-style:none; margin:0; padding:0;
+    border-top:1px solid var(--ink);
+  }
+  .ledger li{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:2rem;
+    padding:1.5rem 0;
+    border-bottom:1px solid rgba(26,20,16,.25);
+    align-items:baseline;
+  }
+  @media (min-width:740px){
+    .ledger li{grid-template-columns:1.2fr 2fr auto; gap:2.5rem}
+  }
+  .ledger__name{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(1.3rem, 1.4vw + .6rem, 1.8rem);
+    letter-spacing:-.01em;
+    line-height:1.1;
+  }
+  .ledger__name em{font-style:italic; font-weight:400; color:var(--oxblood); display:block; font-size:.75em; margin-top:.1em}
+  .ledger__desc{
+    font-size:.98rem; line-height:1.5; color:var(--ink-soft); max-width:42ch;
+    grid-column:1 / -1;
+  }
+  @media (min-width:740px){ .ledger__desc{grid-column:auto} }
+  .ledger__tag{
+    font-family:var(--display); font-style:italic;
+    font-size:.85rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--ink); white-space:nowrap;
+    grid-column:1 / -1;
+  }
+  @media (min-width:740px){ .ledger__tag{grid-column:auto; text-align:right} }
+
+  /* ─── pull quote ──────────────────────────────────────── */
+  .pull{
+    padding:clamp(3.5rem, 8vw, 6rem) 0;
+    text-align:center;
+    border-bottom:1px solid var(--rule);
+  }
+  .pull blockquote{
+    margin:0 auto; max-width:30ch;
+    font-family:var(--display); font-style:italic;
+    font-size:clamp(1.6rem, 2.4vw + 1rem, 3.2rem);
+    line-height:1.18; letter-spacing:-.01em;
+    color:var(--ink);
+    text-wrap:balance;
+  }
+  .pull blockquote::before{content:"\201C "; color:var(--oxblood)}
+  .pull blockquote::after{content:" \201D"; color:var(--oxblood)}
+  .pull cite{
+    display:inline-block; margin-top:2rem;
+    font-family:var(--display); font-style:normal;
+    font-size:.85rem; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ─── visit / contact ─────────────────────────────────── */
+  .visit{
+    background:var(--ink);
+    color:var(--paper);
+    padding:clamp(3rem, 7vw, 5.5rem) 0;
+    border-bottom:1px solid var(--ink);
+  }
+  .visit__grid{
+    display:grid; grid-template-columns:1fr; gap:2.5rem;
+  }
+  @media (min-width:820px){
+    .visit__grid{grid-template-columns:1.1fr 1fr 1fr; gap:3.5rem}
+  }
+  .visit__kicker{
+    font-family:var(--display); font-style:italic;
+    font-size:.85rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--brass);
+    border-top:1px solid var(--brass);
+    padding-top:1rem; margin-bottom:1.25rem;
+  }
+  .visit__title{
+    font-size:clamp(2.4rem, 4.5vw + .5rem, 4rem);
+    line-height:.95; letter-spacing:-.02em;
+    margin-bottom:1rem;
+  }
+  .visit__title em{font-style:italic; font-weight:400; color:var(--brass)}
+  .visit__addr{
+    font-family:var(--display); font-size:1.05rem; line-height:1.5;
+    color:var(--paper); margin-bottom:1.5rem;
+  }
+  .visit__map{
+    display:inline-block; font-family:var(--display); font-style:italic;
+    font-size:.9rem; color:var(--brass); border-bottom:1px solid var(--brass);
+    padding-bottom:2px; text-decoration:none;
+  }
+  .visit__map:hover{color:var(--paper); border-color:var(--paper)}
+
+  .hours{list-style:none; margin:0; padding:0}
+  .hours li{
+    display:grid; grid-template-columns:1fr auto;
+    gap:1rem; padding:.55rem 0;
+    border-bottom:1px solid rgba(241,231,211,.18);
+    font-family:var(--display); font-size:.98rem;
+  }
+  .hours li:first-child{border-top:1px solid rgba(241,231,211,.35)}
+  .hours li.closed{color:rgba(241,231,211,.55); font-style:italic}
+  .hours__day{letter-spacing:.04em}
+  .hours__time{font-variant-numeric:tabular-nums}
+
+  .phone{
+    display:block; text-decoration:none;
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(1.9rem, 3vw + .8rem, 2.8rem);
+    line-height:1; letter-spacing:-.01em;
+    color:var(--paper);
+    margin:.4rem 0 .25rem;
+    font-variant-numeric:tabular-nums;
+  }
+  .phone:hover{color:var(--brass)}
+  .phone__note{
+    font-family:var(--display); font-style:italic;
+    font-size:.85rem; color:rgba(241,231,211,.7);
+  }
+
+  /* ─── footer letterhead ───────────────────────────────── */
+  .colophon{
+    background:var(--oxblood-deep);
+    color:var(--paper);
+    padding:clamp(2.5rem, 5vw, 4rem) 0 1.5rem;
+    text-align:center;
+  }
+  .colophon__mark{
+    font-family:var(--display); font-weight:700;
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    letter-spacing:-.015em; line-height:1;
+  }
+  .colophon__mark em{font-style:italic; font-weight:400; color:var(--brass)}
+  .colophon__sub{
+    font-family:var(--display); font-style:italic;
+    font-size:.95rem; letter-spacing:.08em;
+    color:rgba(241,231,211,.75);
+    margin-top:.8rem;
+  }
+  .colophon__rule{
+    width:3rem; height:1px; background:var(--brass);
+    border:0; margin:1.8rem auto;
+  }
+  .colophon__meta{
+    font-family:var(--display); font-style:italic;
+    font-size:.78rem; letter-spacing:.18em; text-transform:uppercase;
+    color:rgba(241,231,211,.55);
+  }
+  .colophon a{color:var(--brass); text-decoration:none; border-bottom:1px solid transparent}
+  .colophon a:hover{border-color:var(--brass)}
+
+  /* ─── scroll reveal (progressive enhancement) ─────────── */
+  @supports (animation-timeline: view()){
+    .ledger li, .lede__body p, .pull blockquote{
+      animation:rise both;
+      animation-timeline:view();
+      animation-range:entry 0% cover 25%;
+    }
+    @keyframes rise{
+      from{opacity:0; transform:translateY(1.4rem)}
+      to{opacity:1; transform:translateY(0)}
+    }
+  }
+
+  /* ─── small-screen tweaks ─────────────────────────────── */
+  @media (max-width:520px){
+    .topbar__nav{gap:1rem}
+    .topbar__hours{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar__row">
+    <div class="topbar__hours">Open today until 4pm</div>
+    <nav class="topbar__nav" aria-label="Primary">
+      <a href="#counter">The Counter</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+441223350972">01223 350 972</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="masthead">
+    <div class="wrap">
+      <p class="masthead__eyebrow">Master Butchers &amp; Purveyors of Fine Foods</p>
+      <h1 class="masthead__title">A. Waller<br><em>&amp; Son</em></h1>
+      <p class="masthead__lede">A family butcher on Victoria Avenue, serving Cambridge from a single shopfront.</p>
+      <hr class="masthead__rule">
+      <p class="masthead__establ">Victoria Avenue · Cambridge · CB4&nbsp;1EG</p>
+    </div>
+  </section>
+
+  <div class="strip" aria-hidden="true">
+    <div class="strip__track">
+      <span>East Anglian Beef</span>
+      <span>Award-winning Sausages</span>
+      <span>Home-cooked Pies</span>
+      <span>Lamb</span>
+      <span>Pork</span>
+      <span>Cut to Order</span>
+      <span>East Anglian Beef</span>
+      <span>Award-winning Sausages</span>
+      <span>Home-cooked Pies</span>
+      <span>Lamb</span>
+      <span>Pork</span>
+      <span>Cut to Order</span>
+    </div>
+  </div>
+
+  <section class="lede">
+    <div class="wrap">
+      <div class="lede__grid">
+        <div>
+          <p class="lede__kicker">A note on the shop</p>
+        </div>
+        <div class="lede__body">
+          <p>Waller's is the kind of shop a city keeps. A counter, a window onto Victoria Avenue, the day's beef ranged behind glass, and a small queue out the door on Saturday morning.</p>
+          <p>We work from a short list of trusted East Anglian farms. Beef hangs until it's ready. Sausages are made on the premises. The pies are cooked here, in the back, by hand, in the morning.</p>
+          <p>If you'd like something cut a particular way — a crown, a rolled shoulder, a fore-rib for Sunday — phone the shop. We'll have it ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="counter" id="counter">
+    <div class="wrap">
+      <header class="counter__head">
+        <h2 class="counter__title">From the<br><em>counter</em></h2>
+        <p class="counter__intro">A short, honest list. What we have most days, and what we're known for.</p>
+      </header>
+
+      <ul class="ledger">
+        <li>
+          <span class="ledger__name">East Anglian Beef <em>hung &amp; aged</em></span>
+          <span class="ledger__desc">Sourced from farms within a short drive of the shop. Sirloin, rib, rump, brisket. Cut and trimmed to your order.</span>
+          <span class="ledger__tag">House Speciality</span>
+        </li>
+        <li>
+          <span class="ledger__name">Sausages <em>made on the premises</em></span>
+          <span class="ledger__desc">A range of pork sausages made in the back of the shop. Traditional Cambridge, plain pork, and a few less obvious varieties depending on the week.</span>
+          <span class="ledger__tag">Award-winning</span>
+        </li>
+        <li>
+          <span class="ledger__name">Home-cooked Pies <em>baked daily</em></span>
+          <span class="ledger__desc">Steak, steak and ale, chicken and mushroom. Cooked in the morning, sold from the warm shelf at the back of the counter.</span>
+          <span class="ledger__tag">Daily</span>
+        </li>
+        <li>
+          <span class="ledger__name">Lamb <em>whole, half &amp; cuts</em></span>
+          <span class="ledger__desc">Leg, shoulder, rack, chops, and mince. Whole and half lambs available with notice for freezer orders.</span>
+          <span class="ledger__tag">Counter</span>
+        </li>
+        <li>
+          <span class="ledger__name">Pork <em>chops, joints, belly</em></span>
+          <span class="ledger__desc">Loin chops, belly slices, leg, shoulder, and trimmings for the sausage block. Sunday joints ready Saturday morning.</span>
+          <span class="ledger__tag">Counter</span>
+        </li>
+        <li>
+          <span class="ledger__name">Cut to order <em>by phone or in person</em></span>
+          <span class="ledger__desc">Crowns, rolled joints, butterflied legs, mince to a stated fat percentage. Speak to the counter or call ahead.</span>
+          <span class="ledger__tag">Custom</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="pull">
+    <div class="wrap">
+      <blockquote>A family butcher, still cutting from the block — five days a week, plus Saturday morning.</blockquote>
+      <cite>— 15 Victoria Avenue, Cambridge</cite>
+    </div>
+  </section>
+
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="visit__grid">
+        <div>
+          <p class="visit__kicker">Find the shop</p>
+          <h2 class="visit__title">Victoria<br>Avenue, <em>Cambridge</em></h2>
+          <p class="visit__addr">
+            15 Victoria Avenue<br>
+            Cambridge<br>
+            CB4&nbsp;1EG
+          </p>
+          <a class="visit__map" href="https://www.google.com/maps/search/?api=1&query=A.+Waller+%26+Son+15+Victoria+Avenue+Cambridge+CB4+1EG" target="_blank" rel="noopener">Open in Google Maps →</a>
+        </div>
+
+        <div>
+          <p class="visit__kicker">Opening hours</p>
+          <ul class="hours">
+            <li><span class="hours__day">Monday</span><span class="hours__time">8 – 4</span></li>
+            <li><span class="hours__day">Tuesday</span><span class="hours__time">8 – 4</span></li>
+            <li><span class="hours__day">Wednesday</span><span class="hours__time">8 – 4</span></li>
+            <li><span class="hours__day">Thursday</span><span class="hours__time">8 – 4</span></li>
+            <li><span class="hours__day">Friday</span><span class="hours__time">8 – 4</span></li>
+            <li><span class="hours__day">Saturday</span><span class="hours__time">8 – 2</span></li>
+            <li class="closed"><span class="hours__day">Sunday</span><span class="hours__time">Closed</span></li>
+            <li class="closed"><span class="hours__day">Bank Holidays</span><span class="hours__time">Closed</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="visit__kicker">Place an order</p>
+          <a class="phone" href="tel:+441223350972">01223&nbsp;350&nbsp;972</a>
+          <p class="phone__note">Phone before midday for collection the same day. Larger joints and freezer orders by arrangement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p class="colophon__mark">A. Waller <em>&amp; Son</em></p>
+    <p class="colophon__sub">Master Butchers · Victoria Avenue · Cambridge</p>
+    <hr class="colophon__rule">
+    <p class="colophon__meta">
+      15 Victoria Avenue&nbsp;&nbsp;·&nbsp;&nbsp;CB4&nbsp;1EG&nbsp;&nbsp;·&nbsp;&nbsp;<a href="tel:+441223350972">01223&nbsp;350&nbsp;972</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
